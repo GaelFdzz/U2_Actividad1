@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libreria/admin/frontend/styles/mostrar_libros.css">
     <title>Listado de Libros</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
 <body>
     <h1>Listado de Libros</h1>
+    <a href="/libreria/admin/index.php">Regresar</a>
     <?php
-    // Paso 1: Conexión a la Base de Datos
+    //Conexión a la Base de Datos
     $conexion = mysqli_connect('localhost', 'root', '', 'libreria', '3306');
 
     if (!$conexion) {
         die('Error de conexión: ' . mysqli_connect_error());
     }
 
-    // Paso 2: Consulta SQL para Obtener Libros
+    //Consulta SQL para Obtener Libros
     $query = "SELECT * FROM libros";
     $resultado = mysqli_query($conexion, $query);
 
@@ -38,7 +26,7 @@
     }
     ?>
 
-    <!-- Paso 3: Impresión de la Tabla HTML -->
+    <!-- Impresión de la Tabla HTML -->
     <table>
         <thead>
             <tr>
@@ -52,7 +40,7 @@
         </thead>
         <tbody>
             <?php
-            // Paso 4: Iterar sobre los Resultados y Mostrar en la Tabla
+            // Iterar sobre los Resultados y Mostrar en la Tabla
             while ($fila = mysqli_fetch_assoc($resultado)) {
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($fila['isbn']) . "</td>";
@@ -68,7 +56,7 @@
     </table>
 
     <?php
-    // Paso 5: Liberar Resultado y Cerrar Conexión
+    // Liberar Resultado y Cerrar Conexión
     mysqli_free_result($resultado);
     mysqli_close($conexion);
     ?>

@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <a href="/libreria/admin/index.php">Regresar</a>
+    <h1>Registrar un libro</h1>
 
     <div id="toast-container" class="toast-container" href="notify.css"></div>
 
@@ -112,6 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <input type="submit" value="Enviar">
     </form>
+
+    <a href="/libreria/admin/index.php" class="return-button">Regresar</a>
 
     <!-- JavaScript para mostrar notificaciones -->
     <?php if (!empty($errores)): ?>
